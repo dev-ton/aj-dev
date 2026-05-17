@@ -25,7 +25,7 @@ A high-performance, responsive portfolio built with **Astro**, **Tailwind CSS**,
 Follow these instructions to get a local copy up and running.
 
 ### Prerequisites
-Make sure you have **Astro v6** and **Node.js** (v22.12.0 or higher) installed on your machine.
+Make sure you have **Node.js** v22.12.0 or higher installed. If you use `nvm`, run `nvm use` from the project root.
 
 ### Installation
 1. Click **Use this template** on this repository.
