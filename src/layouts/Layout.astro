@@ -10,6 +10,10 @@ const { title } = Astro.props;
 
 const baseTheme = SITE_CONFIG.baseTheme;
 const defaultTheme = `${baseTheme}-dark`;
+const publicBase = import.meta.env.BASE_URL.endsWith('/')
+  ? import.meta.env.BASE_URL
+  : `${import.meta.env.BASE_URL}/`;
+const faviconHref = `${publicBase}favicon.ico`;
 ---
 
 <!doctype html>
@@ -17,7 +21,7 @@ const defaultTheme = `${baseTheme}-dark`;
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/png" href="/favicon.ico" />
+    <link rel="icon" type="image/png" href={faviconHref} />
     <title>{title}</title>
 
     <!-- THEME TOGGLE SCRIPT -->

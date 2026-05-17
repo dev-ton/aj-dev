@@ -1,26 +1,58 @@
 [
   {
-    "company": "Demo Company",
-    "role": "Lead Software Engineer",
-    "period": "Oct 2025 - Present",
+    "company": "Digitalwerk GmbH",
+    "role": "Fullstack Developer",
+    "period": "Jun 2023 - Present",
     "type": "Full time job",
-    "description": "Leading cross-platform mobile development using Flutter and FastAPI. Focused on scalable system design and high-performance data processing.",
-    "skills": ["Leading", "Collaboration"]
+    "description": "Building enterprise web applications for major automotive brands using the GRAND stack. Performing thorough code reviews, writing and updating E2E/unit tests, and contributing practical input to estimates and technical decisions.",
+    "skills": ["GraphQL", "React", "Apollo", "Neo4j", "Node.js", "Jest", "Cypress"]
   },
   {
-    "company": "Demo Company",
-    "role": "Full-stack Developer",
-    "period": "Sep 2023 - Sep 2025",
+    "company": "Audaris GmbH",
+    "role": "Frontend Developer",
+    "period": "Dec 2021 - Feb 2023",
     "type": "Full time job",
-    "description": "Specializing in Business Research Methods and Strategic HRM. Applying analytical frameworks to human capital management.",
-    "skills": ["React", "Node.js", "PostgreSQL", "Docker"]
+    "description": "Developed two production web apps for car-dealer networks using Vue.js and TypeScript. Collaborated closely with designers to translate Figma concepts into scalable, responsive UI components and refactored legacy code into clean, typed components.",
+    "skills": ["Vue.js", "TypeScript", "Figma", "Responsive UI", "Refactoring"]
   },
   {
-    "company": "Demo University of Tech",
-    "role": "BSc in Computer Science",
-    "period": "Jun 2020 - Jun 2024",
-    "type": "Student",
-    "description": "Specializing in Business Research Methods and Strategic HRM. Applying analytical frameworks to human capital management.",
-    "skills": ["C++", "OOP", "Problem Solving"]
+    "company": "Freelance",
+    "role": "Frontend Developer & UX/UI Designer",
+    "period": "Sep 2019 - Dec 2021",
+    "type": "Freelance",
+    "description": "Built websites end-to-end using React and TypeScript. Created UX/UI designs and translated them into working components, connected websites to headless CMS platforms such as Strapi, and handled long-term maintenance.",
+    "skills": ["React", "TypeScript", "UX/UI", "Strapi", "Headless CMS"]
+  },
+  {
+    "company": "Havas Worldwide Prague",
+    "role": "Senior Digital Project Manager / Front-end Developer",
+    "period": "Jan 2017 - Sep 2019",
+    "type": "Full time job",
+    "description": "Delivered digital projects for global clients including BMW Motorsport, JDE, Phillips, Bayer and Sanofi. Combined project management with hands-on JavaScript development and supported leadership on technology strategy and team processes.",
+    "skills": ["JavaScript", "Project Management", "Digital Strategy", "Client Delivery"]
+  },
+  {
+    "company": "Across Asia & Africa",
+    "role": "Hospitality & Volunteer Work",
+    "period": "Mar 2014 - Dec 2016",
+    "type": "Travel & volunteering",
+    "description": "Lived and worked across various hospitality roles and volunteered in sustainable agriculture and nature-protection projects. Developed strong intercultural communication and adaptability.",
+    "skills": ["Communication", "Adaptability", "Volunteer Work", "Hospitality"]
+  },
+  {
+    "company": "Wunderman Prague",
+    "role": "Frontend Developer",
+    "period": "Mar 2013 - Mar 2014",
+    "type": "Full time job",
+    "description": "Maintained and updated production websites for Ford Motor Company across the European market.",
+    "skills": ["Frontend", "Production Websites", "Automotive", "Maintenance"]
+  },
+  {
+    "company": "Various Companies",
+    "role": "Front-end Developer / Graphic Designer / Flash Animator",
+    "period": "Dec 2007 - Mar 2014",
+    "type": "Contract work",
+    "description": "Created websites and animated banners. Delivered both digital and print design projects.",
+    "skills": ["Frontend", "Graphic Design", "Flash Animation", "Print Design"]
   }
 ]

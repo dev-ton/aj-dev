@@ -130,6 +130,18 @@
     /*Transition for theme switching*/
     transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
   }
+
+  a[href],
+  button:not(:disabled),
+  [role="button"] {
+    cursor: pointer;
+  }
+
+  a[href] *,
+  button:not(:disabled) *,
+  [role="button"] * {
+    cursor: inherit;
+  }
 }
 
 @layer components {

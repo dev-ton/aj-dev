@@ -2,6 +2,9 @@
 // Import your data and the new component at the top of the file
 import careerData from '../data/career.json';
 import CareerCard from './career-card.astro';
+
+const visibleCareerItems = 4;
+const hasEarlierRoles = careerData.length > visibleCareerItems;
 ---
 
 <section id="career" class="section-container max-w-6xl mx-auto overflow-hidden">
@@ -22,7 +25,7 @@ import CareerCard from './career-card.astro';
       {/* Mobile View */}
       <div class="md:hidden space-y-8">
         {careerData.map((item, index) => (
-          <div class="scroll-stat relative pl-6">
+          <div class={`scroll-stat career-entry relative pl-6 ${index >= visibleCareerItems ? 'career-extra hidden' : ''}`}>
             {/* Dot for mobile view*/}
             <div class="absolute left-0 top-1 z-10">
               <div class={`w-4 h-4 rounded-full border-4 border-[#0a0a0a] 
@@ -38,7 +41,7 @@ import CareerCard from './career-card.astro';
       {/* Desktop View */}
       <div class="hidden md:block space-y-4">
         {careerData.map((item, index) => (
-          <div class="scroll-stat relative grid grid-cols-2">
+          <div class={`scroll-stat career-entry relative grid grid-cols-2 ${index >= visibleCareerItems ? 'career-extra hidden' : ''}`}>
             {/* Center Dot */}
             <div class="absolute left-1/2 -translate-x-1/2 top-1 z-10">
               <div class={`w-4 h-4 rounded-full border-4 border-[#0a0a0a] 
@@ -63,6 +66,21 @@ import CareerCard from './career-card.astro';
         ))}
       </div>
     </div>
+
+    {hasEarlierRoles && (
+      <div class="mt-10 flex justify-center">
+        <button
+          id="career-toggle"
+          type="button"
+          aria-expanded="false"
+          class="group relative inline-flex items-center justify-center px-8 py-2 rounded-full border border-accent/30 bg-accent/5 text-maintext font-body text-sm transition-all duration-300 hover:border-accent/60 hover:bg-accent/10 hover:scale-105 cursor-pointer"
+          data-show-label="Show Earlier History"
+        >
+          <span>Show Earlier History</span>
+          <div class="absolute inset-0 rounded-full blur-md bg-accent/20 -z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+        </button>
+      </div>
+    )}
   </div>
 </section>
 
@@ -93,6 +111,10 @@ import CareerCard from './career-card.astro';
     opacity: 1;
     transform: translateY(0) scale(1);
   }
+
+  .career-extra.hidden {
+    display: none;
+  }
 </style>
 
 <script>
@@ -121,7 +143,52 @@ import CareerCard from './career-card.astro';
 
   // Runs on initial load
   revealCards();
+
+  function setupCareerToggle() {
+    const button = document.getElementById('career-toggle');
+    if (!button) return;
+
+    const label = button.querySelector('span');
+    const extras = document.querySelectorAll('.career-extra');
+    const careerSection = document.getElementById('career');
+    const showLabel = button.dataset.showLabel || 'Show Earlier History';
+
+    const collapseEarlierHistory = () => {
+      extras.forEach((entry) => {
+        entry.classList.add('hidden');
+        entry.classList.remove('reveal');
+      });
+
+      button.hidden = false;
+      button.setAttribute('aria-expanded', 'false');
+      if (label) label.textContent = showLabel;
+    };
+
+    button.addEventListener('click', () => {
+      button.setAttribute('aria-expanded', 'true');
+      button.hidden = true;
+
+      extras.forEach((entry) => {
+        entry.classList.remove('hidden');
+        entry.classList.add('reveal');
+      });
+    });
+
+    window.addEventListener('scroll', () => {
+      if (!careerSection || button.getAttribute('aria-expanded') !== 'true') return;
+
+      const sectionTop = careerSection.getBoundingClientRect().top + window.scrollY;
+      if (window.scrollY < sectionTop - 20) {
+        collapseEarlierHistory();
+      }
+    }, { passive: true });
+  }
+
+  setupCareerToggle();
   
   // Necessary for Astro View Transitions if you use them
-  document.addEventListener('astro:after-swap', revealCards);
+  document.addEventListener('astro:after-swap', () => {
+    revealCards();
+    setupCareerToggle();
+  });
 </script>

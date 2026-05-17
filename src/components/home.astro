@@ -37,15 +37,27 @@ if (isApiLive && BASE_URL) {
 }
 
 const { name, photoUrl, intro, introHtml, resumeUrl, socials } = data;
+const publicBase = import.meta.env.BASE_URL.endsWith('/')
+  ? import.meta.env.BASE_URL
+  : `${import.meta.env.BASE_URL}/`;
+
+const withBase = (url: string) => {
+  if (/^(?:[a-z][a-z\d+.-]*:|#)/i.test(url)) return url;
+  return `${publicBase}${url.replace(/^\//, '')}`;
+};
+
+const photoSrc = withBase(photoUrl);
+const resumeHref = withBase(resumeUrl);
+const fallbackPhotoSrc = withBase('placeholder.jpeg');
 ---
 
 <section id="home" class="flex flex-col items-center justify-center section-container md:pt-30 gap-1 min-h-[80vh] text-center">
   <div class="relative group mb-2 reveal-content" style="animation-delay: 100ms;">
-    <div class="balloon-float w-20 h-20 md:w-24 md:h-24 rounded-full border-2 border-accent overflow-hidden shadow-[0_0_50px_color-mix(in_srgb,var(--color-accent)_33%,transparent)]">
+    <div class="balloon-float w-50 h-50 md:w-60 md:h-60 rounded-full border-2 border-accent overflow-hidden shadow-[0_0_50px_color-mix(in_srgb,var(--color-accent)_33%,transparent)]">
       <img 
-        src={photoUrl}
+        src={photoSrc}
         alt={name}
-        onerror="this.onerror=null;this.src='/placeholder.jpeg';"
+        onerror={`this.onerror=null;this.src='${fallbackPhotoSrc}';`}
         class="w-full h-full object-cover scale-110" 
       />
     </div>
@@ -71,9 +83,10 @@ const { name, photoUrl, intro, introHtml, resumeUrl, socials } = data;
 
   <div class="mt-8 mb-4 reveal-content" style="animation-delay: 400ms;">
     <a 
-      href={resumeUrl} 
+      href={resumeHref} 
       target="_blank" 
       rel="noopener noreferrer"
+      download
       class="group relative inline-flex items-center justify-center px-10 py-2 bg-white/5 border border-white/10 rounded-full text-maintext font-body transition-all duration-300
 
              <!-- /* Mobile: Always active */ -->
@@ -81,11 +94,11 @@ const { name, photoUrl, intro, introHtml, resumeUrl, socials } = data;
              
              <!-- /* Desktop: Reset and hover */ -->
              md:border-accent/50 md:bg-accent/10 md:shadow-none md:hover:border-accent/50 md:hover:bg-accent/10 md:hover:shadow-[0_0_20px_rgba(var(--accent-rgb),0.3)] 
-             hover:scale-105"
+             hover:scale-105 cursor-pointer"
     >
       <div class="flex flex-col items-center justify-center text-center">
         <span class="tracking-wide text-sm md:text-base font-medium transition-transform duration-300 md:translate-y-2 md:group-hover:translate-y-0">
-          View Resume
+          Download CV
         </span>
         
         <span class="text-[10px] text-subtext font-light whitespace-nowrap transition-all duration-300 
@@ -97,7 +110,7 @@ const { name, photoUrl, intro, introHtml, resumeUrl, socials } = data;
         </span>
       </div>
       
-      <div class="absolute inset-0 rounded-full blur-md bg-accent/20 -z-10 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-500"></div>
+      <div class="absolute inset-0 rounded-full blur-md bg-accent/20 -z-10 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
     </a>
 </div>
 
@@ -106,7 +119,7 @@ const { name, photoUrl, intro, introHtml, resumeUrl, socials } = data;
       <a 
         href={social.url} 
         target="_blank" 
-        class="group relative flex flex-col items-center justify-center transition-all duration-300 hover:scale-110"
+        class="group relative flex flex-col items-center justify-center transition-all duration-300 hover:scale-110 cursor-pointer"
       >
         <Icon 
         name={social.icon} 

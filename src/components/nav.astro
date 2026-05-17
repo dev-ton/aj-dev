@@ -19,11 +19,6 @@ const navItems: NavItem[] = [
     icon: `mdi:work`,
   },
   {
-    label: "Projects",
-    href: "#projects",
-    icon: `mdi:computer`,
-  },
-  {
     label: "Tech",
     href: "#tech",
     icon: `mdi:code-tags`,
@@ -58,7 +53,7 @@ const navItems: NavItem[] = [
             <li class="flex-1 md:flex-none">
               <a
                 href={item.href}
-                class="flex flex-col items-center gap-1 text-accent transition-colors text-xs md:text-base relative group"
+                class="flex flex-col items-center gap-1 text-accent transition-colors text-xs md:text-base relative group cursor-pointer"
               >
                 <div class="absolute -left-6 top-1/2 -translate-y-1/2 w-2 h-2 rounded-full transition-all duration-300 scale-0 opacity-0 nav-indicator hidden md:block" />
                 <span class="md:hidden flex items-center justify-center w-6 h-6">
@@ -322,4 +317,3 @@ const navItems: NavItem[] = [
     sections.forEach((section) => observer.observe(section));
   });
 </script>
-
