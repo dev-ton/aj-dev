@@ -5,8 +5,8 @@ import icon from "astro-icon";
 
 // https://astro.build/config
 export default defineConfig({
-  // site: '#',
-  // base: '/',
+  site: "https://dev-ton.github.io",
+  base: "/aj-dev",
   vite: {
     plugins: [tailwindcss()],
   },
