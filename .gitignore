@@ -3,6 +3,9 @@ dist/
 # generated types
 .astro/
 
+# repo instructions
+AGENTS.md
+
 # dependencies
 node_modules/
 
