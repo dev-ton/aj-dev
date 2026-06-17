@@ -6,13 +6,17 @@ Live Demo: [careerportofio.netlify.app](https://careerportofio.netlify.app)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![Contributions Welcome](https://img.shields.io/badge/🤝_Contributions-Welcome-blue)](CONTRIBUTING.md)
 
-A high-performance, responsive portfolio built with **Astro**, **Tailwind CSS**, and **Native Browser Animations**. Designed to be 100% data-driven and easy to customize as a reusable template.
+A high-performance, responsive portfolio built with **Astro**, **Tailwind CSS**,
+and **Native Browser Animations**. Designed to be 100% data-driven and easy to
+customize as a reusable template.
 
 ## 🌟 Highlights
 
 - **Zero-JS by Default:** Leveraging Astro's islands architecture.
-- **JSON-First:** Update your information in `src/data/` without touching any code.
-- **Built-in Themes**: Switch between multiple professional color palettes and light/dark modes from a single config file.
+- **JSON-First:** Update your information in `src/data/` without touching any
+  code.
+- **Built-in Themes**: Switch between multiple professional color palettes and
+  light/dark modes from a single config file.
 - **Fully Responsive:** Optimized for mobile, tablet, and desktop.
 - **Performance:** Optimized for perfect Lighthouse scores.
 
@@ -22,7 +26,8 @@ A high-performance, responsive portfolio built with **Astro**, **Tailwind CSS**,
 - **Styling:** [Tailwind CSS](https://tailwindcss.com/)
 - **Icons:** [Iconify](https://iconify.design/) via `astro-icon`
 - **Deployment:** [Netlify](https://www.netlify.com)
-- **Backend:** [FastAPI](https://fastapi.tiangolo.com/) _(Works without backend — open source release coming soon)_
+- **Backend:** [FastAPI](https://fastapi.tiangolo.com/) _(Works without backend
+  — open source release coming soon)_
 
 ## 🚀 Getting Started
 
@@ -30,7 +35,8 @@ Follow these instructions to get a local copy up and running.
 
 ### Prerequisites
 
-Make sure you have **Node.js** v22.12.0 or higher installed. If you use `nvm`, run `nvm use` from the project root.
+Make sure you have **Node.js** v22.12.0 or higher installed. If you use `nvm`,
+run `nvm use` from the project root.
 
 ### Installation
 
@@ -49,7 +55,9 @@ To make this portfolio yours, simply edit the JSON files in `src/data/`.
 
 ### 🎨 Switching Themes
 
-This template comes with multiple built-in color palettes. To change the theme of your portfolio, open `src/config.ts` and update the `baseTheme` variable to one of the available options:
+This template comes with multiple built-in color palettes. To change the theme
+of your portfolio, open `src/config.ts` and update the `baseTheme` variable to
+one of the available options:
 
 ```typescript
 export const SITE_CONFIG = {
@@ -58,11 +66,12 @@ export const SITE_CONFIG = {
 };
 ```
 
-_(The template will automatically handle the dark/light mode toggles for whichever base theme you choose!)_
+_(The template will automatically handle the dark/light mode toggles for
+whichever base theme you choose!)_
 
 ### 📁 Directory Structure
 
-```
+```text
 ├── public/              # Static assets (placeholder.jpg, favicon)
 ├── src/
 │   ├── components/      # Reusable Astro components
@@ -75,7 +84,7 @@ _(The template will automatically handle the dark/light mode toggles for whichev
 └── tsconfig.json        # Typescript configuration
 ```
 
-#### Useful commands and links for reference:
+#### Useful commands and links for reference
 
 | Command                   | Action                                           |
 | :------------------------ | :----------------------------------------------- |
@@ -96,11 +105,11 @@ Astro-icon: `npx astro add astro-icon`
 
 Material Desing Icons: `npm install @iconify-json/mdi`
 
-https://docs.astro.build/en/guides/styling/#add-tailwind-4
+<https://docs.astro.build/en/guides/styling/#add-tailwind-4>
 
-https://www.astroicon.dev
+<https://www.astroicon.dev>
 
-https://icon-sets.iconify.design/mdi/?category=Material
+<https://icon-sets.iconify.design/mdi/?category=Material>
 
 ## 🤝 Contributing
 
