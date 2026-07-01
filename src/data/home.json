@@ -1,11 +1,10 @@
 {
   "name": "Antonin Jech",
   "photoUrl": "antonin-jech.jpeg",
-  "intro": "Senior Frontend Developer focused on React, TypeScript, Vue and UX-minded product interfaces. I build maintainable enterprise web applications, review code thoroughly, and turn design concepts into scalable, responsive components.",
-  "introHtml": "Senior Frontend Developer focused on <span class='text-white font-bold'>React</span>, <span class='text-white font-bold'>TypeScript</span>, <span class='text-white font-bold'>Vue</span> and UX-minded product interfaces. I build maintainable enterprise web applications, review code thoroughly, and turn design concepts into scalable, responsive components.",
-  "webpageTitle": "Antonin Jech",
+  "intro": "Senior Frontend Developer with a years long background spanning software engineering, UX/UI, digital agencies and real-world operational leadership outside tech.\n\nSpecialized in React (or Vue), TypeScript and GraphQL ecosystems, with strong backend overlap in Node.js, APIs and Neo4j. Combines engineering, UX thinking and product understanding to ship scalable frontend systems, while using AI tooling as a practical force multiplier for development and problem-solving.\n\nExperienced with test automation, code reviews and translating complex business requirements into maintainable software. Brings a rare mix of engineering depth, visual thinking and adaptability shaped by years working across different industries and cultures.",
+  "introHtml": "<p>Senior Frontend Developer with a years long background spanning software engineering, <span class='text-white font-bold'>UX/UI</span>, digital agencies and real-world operational leadership outside tech.</p><p>Specialized in <span class='text-white font-bold'>React (or Vue)</span>, <span class='text-white font-bold'>TypeScript</span> and <span class='text-white font-bold'>GraphQL</span> ecosystems, with strong backend overlap in <span class='text-white font-bold'>Node.js</span>, APIs and <span class='text-white font-bold'>Neo4j</span>. Combines engineering, UX thinking and product understanding to ship scalable frontend systems, while using <span class='text-white font-bold'>AI tooling</span> as a practical force multiplier for development and problem-solving.</p><p>Experienced with test automation, code reviews and translating complex business requirements into maintainable software. Brings a rare mix of engineering depth, visual thinking and adaptability shaped by years working across different industries and cultures.</p>",
+  "webpageTitle": "Antonin Jech - Senior Frontend Developer",
   "resumeUrl": "antonin-jech-cv.pdf",
-
   "_comment": "Add your social links below. Leave the 'url' empty to hide the icon. Set 'showInContact' to true or false to control if it appears in the Contact section.",
   "socials": [
     {
@@ -21,7 +20,7 @@
       "showInContact": true
     },
     {
-      "name": "Leetcode",
+      "name": "LeetCode",
       "url": "#",
       "icon": "devicon-plain:leetcode",
       "showInContact": false
@@ -39,7 +38,7 @@
       "showInContact": true
     },
     {
-      "name": "Whatsapp",
+      "name": "WhatsApp",
       "url": "",
       "icon": "mdi:whatsapp",
       "showInContact": false

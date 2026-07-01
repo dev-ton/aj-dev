@@ -1,58 +1,74 @@
 [
   {
     "company": "Digitalwerk GmbH",
-    "role": "Fullstack Developer",
+    "role": "Frontend Developer",
     "period": "Jun 2023 - Present",
-    "type": "Full time job",
-    "description": "Building enterprise web applications for major automotive brands using the GRAND stack. Performing thorough code reviews, writing and updating E2E/unit tests, and contributing practical input to estimates and technical decisions.",
-    "skills": ["GraphQL", "React", "Apollo", "Neo4j", "Node.js", "Jest", "Cypress"]
+    "type": "Full-time",
+    "description": "Developing enterprise web applications for major automotive brands using React, TypeScript, GraphQL, Apollo, Node.js and Neo4j. Working mainly on frontend features with backend overlap, including extensive Neo4j graph database work and large Cypher queries, while improving test coverage with Jest and Cypress and reviewing code.",
+    "skills": ["React", "TypeScript", "GraphQL", "Apollo", "Neo4j", "Cypher", "Node.js", "Jest", "Cypress"]
   },
   {
     "company": "Audaris GmbH",
     "role": "Frontend Developer",
     "period": "Dec 2021 - Feb 2023",
-    "type": "Full time job",
-    "description": "Developed two production web apps for car-dealer networks using Vue.js and TypeScript. Collaborated closely with designers to translate Figma concepts into scalable, responsive UI components and refactored legacy code into clean, typed components.",
-    "skills": ["Vue.js", "TypeScript", "Figma", "Responsive UI", "Refactoring"]
+    "type": "Full-time",
+    "description": "Built and maintained two production web applications for automotive dealer networks. Turned Figma designs into responsive, reusable Vue components, introduced TypeScript into the codebase, and helped migrate legacy Vue 2 code toward Vue 3.",
+    "skills": ["Vue.js", "Vue 3", "TypeScript", "Figma", "Responsive UI", "Migration"]
   },
   {
     "company": "Freelance",
     "role": "Frontend Developer & UX/UI Designer",
     "period": "Sep 2019 - Dec 2021",
     "type": "Freelance",
-    "description": "Built websites end-to-end using React and TypeScript. Created UX/UI designs and translated them into working components, connected websites to headless CMS platforms such as Strapi, and handled long-term maintenance.",
+    "description": "Designed and built websites and product interfaces using React, TypeScript and headless CMS platforms such as Strapi. Handled UX/UI design, frontend implementation, CMS integration and maintenance, with attention to performance, accessibility and client needs.",
     "skills": ["React", "TypeScript", "UX/UI", "Strapi", "Headless CMS"]
   },
   {
     "company": "Havas Worldwide Prague",
-    "role": "Senior Digital Project Manager / Front-end Developer",
+    "role": "Senior Digital Project Manager / Frontend Developer",
     "period": "Jan 2017 - Sep 2019",
-    "type": "Full time job",
-    "description": "Delivered digital projects for global clients including BMW Motorsport, JDE, Phillips, Bayer and Sanofi. Combined project management with hands-on JavaScript development and supported leadership on technology strategy and team processes.",
-    "skills": ["JavaScript", "Project Management", "Digital Strategy", "Client Delivery"]
+    "type": "Full-time",
+    "description": "Managed digital marketing campaigns, HubSpot websites and interactive experiences for international clients including BMW Motorsport, JDE, Philips, Bayer and Sanofi. Combined project planning and client communication with hands-on frontend development, technical guidance, and training for junior developers and managers.",
+    "skills": ["JavaScript", "HubSpot", "Digital Marketing", "Project Management", "Mentoring"]
   },
   {
-    "company": "Across Asia & Africa",
-    "role": "Hospitality & Volunteer Work",
-    "period": "Mar 2014 - Dec 2016",
-    "type": "Travel & volunteering",
-    "description": "Lived and worked across various hospitality roles and volunteered in sustainable agriculture and nature-protection projects. Developed strong intercultural communication and adaptability.",
-    "skills": ["Communication", "Adaptability", "Volunteer Work", "Hospitality"]
+    "company": "Fat Cat Backpackers, Kampala",
+    "role": "General Manager",
+    "period": "2016",
+    "type": "Hospitality management",
+    "description": "Ran daily operations for a busy backpacker guesthouse in Kampala, Uganda. Coordinated the team, handled bookings and payments, supported guests, managed social media and local marketing, and built lasting relationships with Peace Corps members, volunteer groups and long-term travelers.",
+    "skills": ["Operations Management", "Customer Service", "Social Media", "Marketing", "Community Building"]
+  },
+  {
+    "company": "Ostello Bello Bagan",
+    "role": "Front Office Manager",
+    "period": "2015",
+    "type": "Hospitality management",
+    "description": "Led front office operations for a high-traffic hostel in Bagan, Myanmar. Managed reservations, payments, bar and breakfast service, guest support, and personally guided local temple tours, especially the early sunrise and sunset trips guests came for.",
+    "skills": ["Front Office", "Reservations", "Customer Service", "Tour Guiding"]
+  },
+  {
+    "company": "Gunung Leuser National Park, Sumatra",
+    "role": "Conservation Volunteer",
+    "period": "2014",
+    "type": "Volunteer work",
+    "description": "Supported rainforest and wildlife protection work in Sumatra, Indonesia. Helped with camera-trap monitoring, anti-poaching patrols, field logistics and conservation work in the Gunung Leuser ecosystem.",
+    "skills": ["Wildlife Monitoring", "Conservation", "Field Work", "Teamwork"]
   },
   {
     "company": "Wunderman Prague",
     "role": "Frontend Developer",
     "period": "Mar 2013 - Mar 2014",
-    "type": "Full time job",
-    "description": "Maintained and updated production websites for Ford Motor Company across the European market.",
+    "type": "Full-time",
+    "description": "Maintained and updated production websites for Ford Motor Company across European markets. Handled frontend updates, content changes and campaign support while keeping brand consistency and browser compatibility in check.",
     "skills": ["Frontend", "Production Websites", "Automotive", "Maintenance"]
   },
   {
     "company": "Various Companies",
-    "role": "Front-end Developer / Graphic Designer / Flash Animator",
+    "role": "Frontend Developer / Graphic Designer / Flash Animator",
     "period": "Dec 2007 - Mar 2014",
     "type": "Contract work",
-    "description": "Created websites and animated banners. Delivered both digital and print design projects.",
-    "skills": ["Frontend", "Graphic Design", "Flash Animation", "Print Design"]
+    "description": "Created websites, internal PHP tools, email newsletters, interactive banners, digital assets and print materials for real-estate and business projects. Also supported computer networks and produced designs for cars, billboards, leaflets and catalogs, building a broad foundation across frontend development, design and production workflows.",
+    "skills": ["Frontend", "PHP", "Email Newsletters", "Graphic Design", "Print Design", "Computer Networks"]
   }
 ]
