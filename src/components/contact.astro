@@ -1,117 +1,297 @@
 ---
-import { Icon } from 'astro-icon/components';
-import localData from '../data/home.json';
+import { Icon } from "astro-icon/components";
+import localData from "../data/home.json";
 
+const contactLinks = localData.socials.filter(
+  (social) =>
+    social.showInContact &&
+    social.url &&
+    social.url !== "#",
+);
 ---
 
-<section id="contact" class="section-container">
+<section id="contact" class="section-container overflow-hidden">
   <div class="container mx-auto">
-    <div class="space-y-12">
-      <div class="contact-header opacity-0 mb-16">
-        <h2 class="text-3xl md:text-4xl font-heading font-bold text-maintext mb-2 flex items-center gap-4">
-            <span class="text-accent">/</span> Contact Me
-          </h2>
-        <p class="text-subtext font-body text-sm max-w-md">
-          Feel free to reach out. I'm always open to discussing new projects and opportunities.
+    <div class="contact-content mx-auto max-w-4xl opacity-0">
+      <header class="mb-10 text-center md:mb-12">
+        <h2
+          class="mb-3 font-heading text-3xl font-bold text-maintext md:text-5xl"
+        >
+          Get in touch with me
+        </h2>
+        <p class="mx-auto max-w-xl font-body text-sm text-subtext md:text-base">
+          Have a project in mind? Let's build something thoughtful together.
         </p>
-      </div>
+      </header>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-center">
-        {localData.socials
-        .filter((social) => social.showInContact && social.url && social.url !== "#" && social.url !== "")
-        .map((social) => (
-          <!-- Added 'contact-card' and 'opacity-0' here -->
-          <a 
-            href={social.url} 
-            target="_blank" 
-            class="contact-card opacity-0 group p-8 bg-accent/5 border border-accent/10 rounded-2xl hover:border-accent/40 hover:bg-accent/10 transition-all duration-300 cursor-pointer"
-          >
-            <Icon 
-              name={social.icon} 
-              class="w-10 h-10 text-accent mb-4 mx-auto group-hover:scale-110 transition-transform" 
+      <div class="contact-panel relative rounded-lg border border-accent/10 bg-accent/5 p-5 sm:p-8 md:p-10">
+        <form class="relative z-10 grid gap-6 md:grid-cols-2" aria-label="Contact form">
+          <div class="contact-field">
+            <label for="contact-name">Name</label>
+            <input
+              id="contact-name"
+              name="name"
+              type="text"
+              autocomplete="name"
+              placeholder="Your name"
             />
-            <h3 class="text-maintext font-bold mb-1">{social.name}</h3>
-            <p class="text-subtext text-xs truncate px-2">
-              {social.url.replace('https://', '').replace('mailto:', '').replace('wa.me/', '+')}
-            </p>
-          </a>
-        ))}
+          </div>
+
+          <div class="contact-field">
+            <label for="contact-email">Email</label>
+            <input
+              id="contact-email"
+              name="email"
+              type="email"
+              autocomplete="email"
+              placeholder="you@example.com"
+            />
+          </div>
+
+          <div class="contact-field md:col-span-2">
+            <label for="contact-message">Message</label>
+            <textarea
+              id="contact-message"
+              name="message"
+              rows="6"
+              placeholder="Tell me a little about your project"
+            ></textarea>
+          </div>
+
+          <button
+            type="button"
+            class="contact-submit md:col-span-2"
+            disabled
+          >
+            Send message
+          </button>
+        </form>
       </div>
 
-      <!-- /* FOOTER */ -->
-      <div class="contact-footer opacity-0 pt-20 border-t border-white/5">
-        <div class="flex flex-col md:flex-row justify-between items-center gap-4">
-          <p class="text-subtext text-sm font-body order-2 md:order-1">
-            {localData.name} © 2026
-          </p>
-        </div>
+      <div class="mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-3">
+        {
+          contactLinks.map((social) => (
+            <a
+              href={social.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="contact-link group inline-flex items-center gap-2 text-sm text-subtext"
+            >
+              <Icon
+                name={social.icon}
+                class="h-5 w-5 text-accent transition-transform duration-300 group-hover:scale-110"
+              />
+              <span>{social.name}</span>
+            </a>
+          ))
+        }
       </div>
-      
+
+      <footer class="mt-16 border-t border-white/5 pt-8 text-center md:mt-20">
+        <p class="font-body text-sm text-subtext">
+          {localData.name} © 2026
+        </p>
+      </footer>
     </div>
   </div>
 </section>
 
 <style>
-  /* Header & Footer Initial State */
-  .contact-header,
-  .contact-footer {
-    transform: translateY(20px);
-    transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  .contact-content {
+    transform: translateY(24px);
+    transition:
+      opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
-  /* Cards Initial State */
-  .contact-card {
-    transform: translateY(20px) scale(0.95);
-    transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-
-  /* Shared Revealed State */
-  .contact-header.reveal,
-  .contact-card.reveal,
-  .contact-footer.reveal {
+  .contact-content.reveal {
     opacity: 1 !important;
-    transform: translateY(0) scale(1);
+    transform: translateY(0);
+  }
+
+  .contact-panel {
+    isolation: isolate;
+    box-shadow:
+      0 28px 70px -42px color-mix(in srgb, var(--color-accent), transparent 20%),
+      0 1px 0 color-mix(in srgb, var(--color-maintext), transparent 94%) inset;
+  }
+
+  .contact-panel::after {
+    position: absolute;
+    z-index: 0;
+    right: 7%;
+    bottom: -20px;
+    left: 7%;
+    height: 56px;
+    border-radius: 50%;
+    background: color-mix(in srgb, var(--color-accent), transparent 35%);
+    filter: blur(38px);
+    opacity: 0;
+    transform: translateY(14px) scaleX(0.55);
+    content: "";
+    pointer-events: none;
+  }
+
+  .contact-panel.underlight-visible::after {
+    animation: contact-underlight 1.25s cubic-bezier(0.16, 1, 0.3, 1) 0.25s forwards;
+  }
+
+  @keyframes contact-underlight {
+    to {
+      opacity: 0.7;
+      transform: translateY(0) scaleX(1);
+    }
+  }
+
+  .contact-field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .contact-field label {
+    color: var(--color-maintext);
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    font-weight: 600;
+  }
+
+  .contact-field input,
+  .contact-field textarea {
+    width: 100%;
+    border: 1px solid color-mix(in srgb, var(--color-accent), transparent 82%);
+    border-radius: 8px;
+    outline: none;
+    background: color-mix(in srgb, var(--color-background), black 28%);
+    color: var(--color-maintext);
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    transition:
+      border-color 0.25s ease,
+      background-color 0.25s ease,
+      box-shadow 0.25s ease;
+  }
+
+  .contact-field input {
+    min-height: 3.25rem;
+    padding: 0 1rem;
+  }
+
+  .contact-field textarea {
+    min-height: 10rem;
+    resize: vertical;
+    padding: 0.9rem 1rem;
+  }
+
+  .contact-field input::placeholder,
+  .contact-field textarea::placeholder {
+    color: color-mix(in srgb, var(--color-subtext), transparent 28%);
+  }
+
+  .contact-field input:hover,
+  .contact-field textarea:hover {
+    border-color: color-mix(in srgb, var(--color-accent), transparent 55%);
+    background: color-mix(in srgb, var(--color-background), black 20%);
+  }
+
+  .contact-field input:focus,
+  .contact-field textarea:focus {
+    border-color: color-mix(in srgb, var(--color-accent), transparent 15%);
+    background: color-mix(in srgb, var(--color-background), black 16%);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-accent), transparent 82%);
+  }
+
+  :global([data-theme$="-light"]) .contact-field input,
+  :global([data-theme$="-light"]) .contact-field textarea {
+    border-color: color-mix(in srgb, var(--color-accent), transparent 90%);
+    background: color-mix(in srgb, var(--color-accent), transparent 95%);
+  }
+
+  :global([data-theme$="-light"]) .contact-field input:hover,
+  :global([data-theme$="-light"]) .contact-field textarea:hover {
+    border-color: color-mix(in srgb, var(--color-accent), transparent 60%);
+    background: color-mix(in srgb, var(--color-accent), transparent 90%);
+  }
+
+  :global([data-theme$="-light"]) .contact-field input:focus,
+  :global([data-theme$="-light"]) .contact-field textarea:focus {
+    border-color: color-mix(in srgb, var(--color-accent), transparent 25%);
+    background: color-mix(in srgb, var(--color-accent), transparent 90%);
+  }
+
+  .contact-submit {
+    min-height: 3.25rem;
+    border: 1px solid color-mix(in srgb, var(--color-accent), white 14%);
+    border-radius: 8px;
+    background: var(--color-accent);
+    box-shadow: 0 12px 30px -18px var(--color-accent);
+    color: var(--color-background);
+    cursor: default;
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    font-weight: 700;
+  }
+
+  .contact-link {
+    transition: color 0.25s ease;
+  }
+
+  .contact-link:hover {
+    color: var(--color-maintext);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .contact-content {
+      transform: none;
+      transition: none;
+    }
+
+    .contact-panel.underlight-visible::after {
+      opacity: 0.7;
+      transform: none;
+      animation: none;
+    }
   }
 </style>
 
 <script>
   const revealContact = () => {
-    const header = document.querySelector('.contact-header');
-    const footer = document.querySelector('.contact-footer');
-    const cards = document.querySelectorAll('.contact-card');
-    
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const target = entry.target as HTMLElement;
+    const content = document.querySelector(".contact-content");
+    const panel = document.querySelector(".contact-panel");
 
-          if (target.classList.contains('contact-card')) {
-            const index = Array.from(cards).indexOf(target);
-            // Stagger effect for the 4-column grid
-            setTimeout(() => {
-              target.classList.add('reveal');
-            }, (index % 4) * 150);
-          } else {
-            // Header and Footer reveal immediately
-            target.classList.add('reveal');
-          }
-          
-          observer.unobserve(target);
+    if (!content || !panel) return;
+
+    const contentObserver = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry?.isIntersecting) return;
+
+        entry.target.classList.add("reveal");
+        contentObserver.unobserve(entry.target);
+      },
+      { threshold: 0.1 },
+    );
+
+    const underlightObserver = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry) return;
+
+        const isFullyVisible = entry.intersectionRatio >= 0.99;
+        const viewportBottom = entry.rootBounds?.bottom ?? window.innerHeight;
+        const isBelowViewport = entry.boundingClientRect.bottom > viewportBottom;
+
+        if (isFullyVisible) {
+          entry.target.classList.add("underlight-visible");
+        } else if (isBelowViewport) {
+          entry.target.classList.remove("underlight-visible");
         }
-      });
-    }, { 
-      threshold: 0.15,
-      rootMargin: '0px 0px -10px 0px'
-    });
+      },
+      { threshold: [0, 0.99, 1] },
+    );
 
-    if (header) observer.observe(header);
-    if (footer) observer.observe(footer);
-    cards.forEach(card => observer.observe(card));
-  }
-  
-  // Runs on initial load
-  window.addEventListener('load', revealContact);
-  
-  // Support for Astro View Transitions
-  document.addEventListener('astro:after-swap', revealContact);
+    contentObserver.observe(content);
+    underlightObserver.observe(panel);
+  };
+
+  revealContact();
+  document.addEventListener("astro:after-swap", revealContact);
 </script>
