@@ -25,7 +25,30 @@ const contactLinks = localData.socials.filter(
       </header>
 
       <div class="contact-panel relative rounded-lg border border-accent/10 bg-accent/5 p-5 sm:p-8 md:p-10">
-        <form class="relative z-10 grid gap-6 md:grid-cols-2" aria-label="Contact form">
+        <form
+          id="contact-form"
+          action="https://formspree.io/f/mqpkebbk"
+          method="POST"
+          class="relative z-10 grid gap-6 md:grid-cols-2"
+          aria-label="Contact form"
+        >
+          <div
+            class="contact-feedback contact-success md:col-span-2"
+            role="status"
+            aria-live="polite"
+            data-fs-success
+          >
+            Thanks, your message is on its way. I'll get back to you soon.
+          </div>
+
+          <div
+            class="contact-feedback contact-error md:col-span-2"
+            role="alert"
+            data-fs-error
+          >
+            Something went wrong. Please try again or email me directly.
+          </div>
+
           <div class="contact-field">
             <label for="contact-name">Name</label>
             <input
@@ -34,7 +57,12 @@ const contactLinks = localData.socials.filter(
               type="text"
               autocomplete="name"
               placeholder="Your name"
+              minlength="2"
+              maxlength="100"
+              required
+              data-fs-field
             />
+            <span class="contact-field-error" data-fs-error="name"></span>
           </div>
 
           <div class="contact-field">
@@ -45,7 +73,11 @@ const contactLinks = localData.socials.filter(
               type="email"
               autocomplete="email"
               placeholder="you@example.com"
+              maxlength="254"
+              required
+              data-fs-field
             />
+            <span class="contact-field-error" data-fs-error="email"></span>
           </div>
 
           <div class="contact-field md:col-span-2">
@@ -55,15 +87,41 @@ const contactLinks = localData.socials.filter(
               name="message"
               rows="6"
               placeholder="Tell me a little about your project"
+              minlength="10"
+              maxlength="3000"
+              required
+              data-fs-field
             ></textarea>
+            <span class="contact-field-error" data-fs-error="message"></span>
           </div>
 
+          <div class="contact-honeypot" aria-hidden="true">
+            <label for="contact-company">Leave this field empty</label>
+            <input
+              id="contact-company"
+              name="_gotcha"
+              type="text"
+              tabindex="-1"
+              autocomplete="off"
+            />
+          </div>
+
+          <input
+            type="hidden"
+            name="subject"
+            value="New portfolio contact message"
+          />
+
           <button
-            type="button"
+            type="submit"
             class="contact-submit md:col-span-2"
-            disabled
+            data-fs-submit-btn
           >
-            Send message
+            <span class="submit-default">Send message</span>
+            <span class="submit-loading">
+              <Icon name="mdi:loading" class="h-5 w-5" />
+              Sending...
+            </span>
           </button>
         </form>
       </div>
@@ -201,6 +259,52 @@ const contactLinks = localData.socials.filter(
     box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-accent), transparent 82%);
   }
 
+  .contact-field input[aria-invalid="true"],
+  .contact-field textarea[aria-invalid="true"] {
+    border-color: #ef4444;
+    box-shadow: 0 0 0 3px color-mix(in srgb, #ef4444, transparent 84%);
+  }
+
+  [data-fs-error]:not([data-fs-active]),
+  [data-fs-success]:not([data-fs-active]) {
+    display: none;
+  }
+
+  .contact-feedback {
+    border: 1px solid;
+    border-radius: 8px;
+    padding: 0.8rem 1rem;
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    line-height: 1.5;
+  }
+
+  .contact-success {
+    border-color: color-mix(in srgb, var(--color-accent), transparent 65%);
+    background: color-mix(in srgb, var(--color-accent), transparent 90%);
+    color: var(--color-maintext);
+  }
+
+  .contact-error {
+    border-color: color-mix(in srgb, #ef4444, transparent 60%);
+    background: color-mix(in srgb, #ef4444, transparent 90%);
+    color: color-mix(in srgb, #ef4444, var(--color-maintext) 35%);
+  }
+
+  .contact-field-error {
+    color: color-mix(in srgb, #ef4444, var(--color-maintext) 25%);
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+  }
+
+  .contact-honeypot {
+    position: absolute;
+    left: -10000px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
+
   :global([data-theme$="-light"]) .contact-field input,
   :global([data-theme$="-light"]) .contact-field textarea {
     border-color: color-mix(in srgb, var(--color-accent), transparent 90%);
@@ -226,10 +330,50 @@ const contactLinks = localData.socials.filter(
     background: var(--color-accent);
     box-shadow: 0 12px 30px -18px var(--color-accent);
     color: var(--color-background);
-    cursor: default;
+    cursor: pointer;
     font-family: var(--font-body);
     font-size: 0.95rem;
     font-weight: 700;
+    transition:
+      filter 0.25s ease,
+      box-shadow 0.25s ease,
+      transform 0.25s ease;
+  }
+
+  .contact-submit:hover:not(:disabled) {
+    box-shadow: 0 16px 34px -18px var(--color-accent);
+    filter: brightness(1.08);
+    transform: translateY(-1px);
+  }
+
+  .contact-submit:disabled {
+    cursor: wait;
+    filter: saturate(0.75);
+  }
+
+  .submit-loading {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+
+  .contact-submit:disabled .submit-default {
+    display: none;
+  }
+
+  .contact-submit:disabled .submit-loading {
+    display: inline-flex;
+  }
+
+  .submit-loading :global(svg) {
+    animation: spin 0.8s linear infinite;
+  }
+
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
   }
 
   .contact-link {
@@ -255,6 +399,22 @@ const contactLinks = localData.socials.filter(
 </style>
 
 <script>
+  import { initForm } from "@formspree/ajax";
+
+  let formHandle: ReturnType<typeof initForm> | undefined;
+
+  const setupContactForm = () => {
+    formHandle?.destroy();
+    formHandle = initForm({
+      formElement: "#contact-form",
+      formId: "mqpkebbk",
+      useDefaultStyles: false,
+      data: {
+        source: "antonin-jech portfolio",
+      },
+    });
+  };
+
   const revealContact = () => {
     const content = document.querySelector(".contact-content");
     const panel = document.querySelector(".contact-panel");
@@ -292,6 +452,10 @@ const contactLinks = localData.socials.filter(
     underlightObserver.observe(panel);
   };
 
+  setupContactForm();
   revealContact();
-  document.addEventListener("astro:after-swap", revealContact);
+  document.addEventListener("astro:after-swap", () => {
+    setupContactForm();
+    revealContact();
+  });
 </script>
