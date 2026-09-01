@@ -117,11 +117,7 @@ const contactLinks = localData.socials.filter(
             class="contact-submit md:col-span-2"
             data-fs-submit-btn
           >
-            <span class="submit-default">Send message</span>
-            <span class="submit-loading">
-              <Icon name="mdi:loading" class="h-5 w-5" />
-              Sending...
-            </span>
+            <span data-submit-label>Send message</span>
           </button>
         </form>
       </div>
@@ -351,31 +347,6 @@ const contactLinks = localData.socials.filter(
     filter: saturate(0.75);
   }
 
-  .submit-loading {
-    display: none;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-  }
-
-  .contact-submit:disabled .submit-default {
-    display: none;
-  }
-
-  .contact-submit:disabled .submit-loading {
-    display: inline-flex;
-  }
-
-  .submit-loading :global(svg) {
-    animation: spin 0.8s linear infinite;
-  }
-
-  @keyframes spin {
-    to {
-      transform: rotate(360deg);
-    }
-  }
-
   .contact-link {
     transition: color 0.25s ease;
   }
@@ -403,6 +374,20 @@ const contactLinks = localData.socials.filter(
 
   let formHandle: ReturnType<typeof initForm> | undefined;
 
+  const setSubmitState = (form: HTMLFormElement, submitting: boolean) => {
+    const button = form.querySelector<HTMLButtonElement>(
+      "[data-fs-submit-btn]",
+    );
+    const label = form.querySelector<HTMLElement>("[data-submit-label]");
+
+    if (button) {
+      button.disabled = submitting;
+      button.setAttribute("aria-busy", String(submitting));
+    }
+
+    if (label) label.textContent = submitting ? "Sending..." : "Send message";
+  };
+
   const setupContactForm = () => {
     formHandle?.destroy();
     formHandle = initForm({
@@ -412,6 +397,8 @@ const contactLinks = localData.socials.filter(
       data: {
         source: "antonin-jech portfolio",
       },
+      disable: ({ form }) => setSubmitState(form, true),
+      enable: ({ form }) => setSubmitState(form, false),
     });
   };
 
